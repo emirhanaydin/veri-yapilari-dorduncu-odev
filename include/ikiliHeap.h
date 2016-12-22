@@ -2,9 +2,11 @@
 #define IKILIHEAP_H
 
 
+#include "sayi.h"
+
 class IkiliHeap {
 private:
-    char *_icerik;
+    Sayi **_icerik;
     int _uzunluk;
 
     void AsagiFirlat(int indeks);
@@ -16,9 +18,9 @@ private:
 public:
     IkiliHeap();
 
-    void Ekle(char karakter);
+    void Ekle(Sayi &sayi);
 
-    char alEnKucuk();
+    Sayi &alEnKucuk();
 
     ~IkiliHeap();
 };

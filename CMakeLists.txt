@@ -12,5 +12,7 @@ set(SOURCE_FILES
         src/gezici.cpp include/gezici.h
         src/bagilListe.cpp include/bagilListe.h
         src/sayi.cpp include/sayi.h
-        src/islem.cpp include/islem.h)
+        src/islem.cpp include/islem.h
+        src/dosya.cpp include/dosya.h
+        src/hata.cpp include/hata.h)
 add_executable(veri_yapilari_dorduncu_odev ${SOURCE_FILES})

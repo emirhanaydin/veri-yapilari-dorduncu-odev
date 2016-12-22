@@ -28,6 +28,8 @@ public:
 
     friend bool operator==(const Sayi &, const Sayi &);
 
+    friend bool operator>(const Sayi &, const Sayi &);
+
     friend Sayi operator+(const Sayi &, const Sayi &);
 
     enum Bicim {
