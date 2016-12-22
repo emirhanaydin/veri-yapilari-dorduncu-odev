@@ -25,8 +25,6 @@ int main() {
 
     Dosya sayilarDosyasi(sayilarYolu);
 
-    int sayilarSatirSay = sayilarDosyasi.satirSayisi();
-
     try {
         sayilarDosyasi.dosyayiOku();
     } catch (DosyaAcmaHatasi) {
@@ -38,6 +36,8 @@ int main() {
         _getch();
         return EXIT_FAILURE;
     }
+
+    int sayilarSatirSay = sayilarDosyasi.satirSayisi();
 
     Sayi *sayiDizisi = new Sayi[sayilarSatirSay];
 
