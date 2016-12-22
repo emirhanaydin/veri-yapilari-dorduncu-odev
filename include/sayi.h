@@ -48,6 +48,10 @@ public:
      */
     char getir(int indeks) const;
 
+    std::string getirKatar() const;
+
+    std::string getirNoktali() const;
+
     /**
      * Konsoldan alınan değerlerin sayıya uygun olarak işlenip aktarılmasını sağlar.
      */

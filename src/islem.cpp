@@ -46,6 +46,35 @@ void Islem::sayiGir(Sayi &sayi) {
     std::cout << std::endl;
 }
 
+std::string Islem::getirKatar(const Sayi &sayi) {
+    std::string katar = std::string();
+
+    for (int i = 0, len = sayi.boyut(); i < len; ++i) {
+        katar += sayi.getir(i);
+    }
+
+    return katar;
+}
+
+std::string Islem::getirNoktali(const Sayi &sayi) {
+    std::string noktali = std::string();
+
+    int boyut = sayi.boyut();
+    int noktaSayaci = 3 - (boyut % 3);
+    if (noktaSayaci == 3) noktaSayaci = 0;
+
+    for (int i = 0; i < boyut; i++) {
+        noktali += sayi.getir(i);
+        noktaSayaci++;
+        if (noktaSayaci == 3 && i < boyut - 1) {
+            noktali += '.';
+            noktaSayaci = 0;
+        }
+    }
+
+    return noktali;
+}
+
 Sayi Islem::topla(const Sayi &sayi, const Sayi &sayi1) {
 //    Her iki listenin de boyutları karşılaştırılır ve küçük boyutlu olan göstericiye atanır.
     const Sayi *kucuk = sayi.boyut() > sayi1.boyut() ? &sayi1 : &sayi;

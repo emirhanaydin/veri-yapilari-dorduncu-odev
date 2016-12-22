@@ -54,17 +54,7 @@ void Dosya::dosyayiOku() throw(DosyaAcmaHatasi) {
 }
 
 void Dosya::satirEkle(const std::string &satir) {
-    bool okundu = true;
-    try {
-        dosyayiOku();
-    } catch (DosyaAcmaHatasi) {
-        okundu = false;
-    }
-
-    if (!okundu)
-        _dosyaIcerigi = std::string();
-
-    if (_dosyaIcerigi[_dosyaIcerigi.length() - 1] != '\n')
+    if (_dosyaIcerigi != std::string() && _dosyaIcerigi[_dosyaIcerigi.length() - 1] != '\n')
         _dosyaIcerigi += '\n';
 
     _dosyaIcerigi += satir;

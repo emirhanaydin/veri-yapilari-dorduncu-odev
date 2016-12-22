@@ -51,6 +51,14 @@ char Sayi::getir(int indeks) const {
     return _liste->getir(indeks);
 }
 
+std::string Sayi::getirKatar() const {
+    return Islem::getirKatar(*this);
+}
+
+std::string Sayi::getirNoktali() const {
+    return Islem::getirNoktali(*this);
+}
+
 void Sayi::sayiGir() {
     Islem::sayiGir(*this); // Islem sınıfının, konsoldan alınan değerleri Sayi'nın listesine uygun biçimde aktaracak
 //    olan ilgili metot çağrılır.

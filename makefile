@@ -13,10 +13,10 @@ make_dirs:
 	IF NOT EXIST $(LIB) (MD "$(LIB)")
 	IF NOT EXIST $(SRC) (MD "$(SRC)")
 	
-gen_libs: bagilListe.o dosya.o dugum.o gezici.o hata.o ikiliHeap.o islem.o konsol.o sayi.o
+gen_libs: main.o bagilListe.o dosya.o dugum.o gezici.o hata.o ikiliHeap.o islem.o konsol.o sayi.o
 
 compile:
-	$(CC) $(LIB)/bagilListe.o $(LIB)/dosya.o $(LIB)/dugum.o $(LIB)/gezici.o $(LIB)/hata.o $(LIB)/ikiliHeap.o $(LIB)/islem.o $(LIB)/konsol.o $(LIB)/sayi.o -o $(BIN)/$(EXE)
+	$(CC) $(LIB)/main.o $(LIB)/bagilListe.o $(LIB)/dosya.o $(LIB)/dugum.o $(LIB)/gezici.o $(LIB)/hata.o $(LIB)/ikiliHeap.o $(LIB)/islem.o $(LIB)/konsol.o $(LIB)/sayi.o -o $(BIN)/$(EXE)
 
 run:
 	$(BIN)/$(EXE).exe
@@ -30,7 +30,7 @@ dosya.o:
 dugum.o:
 	$(CC) -I $(INCL) -c $(SRC)/dugum.cpp -o $(LIB)/dugum.o
 gezici.o:
-	$(CC) -I $(INCL) -c $(SRC)/dugum.cpp -o $(LIB)/gezici.o
+	$(CC) -I $(INCL) -c $(SRC)/gezici.cpp -o $(LIB)/gezici.o
 hata.o:
 	$(CC) -I $(INCL) -c $(SRC)/hata.cpp -o $(LIB)/hata.o
 ikiliHeap.o:

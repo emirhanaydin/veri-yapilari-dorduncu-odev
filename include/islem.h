@@ -20,6 +20,10 @@ public:
 
     static void sayiGir(Sayi &sayi);
 
+    static std::string getirKatar(const Sayi &sayi);
+
+    static std::string getirNoktali(const Sayi &sayi);
+
     /**
      * İki Sayi'yi tüm rakamlarını tek tek karşılaştırarak toplama işlemine tabi tutar.
      * @return İki sayının toplamını tutan yeni bir Sayi nesnesi döndürür.
