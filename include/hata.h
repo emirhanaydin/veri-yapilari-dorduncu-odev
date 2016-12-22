@@ -2,11 +2,9 @@
 * @file hata.h
 * @description Hata tanımlamalarının yapıldığı başlık dosyası.
 * @course 2A
-* @assignment 3
+* @assignment 4
 * @date 11.12.2016
-* @authors
- * Emirhan Aydın (g141210018@sakarya.edu.tr)
- * Oğuzhan Şahin (g141210066@sakarya.edu.tr)
+* @author Emirhan Aydın (g141210018@sakarya.edu.tr)
 */
 
 
@@ -58,6 +56,13 @@ class IndeksAralikDisindaHatasi : public exception {
 public:
     virtual const char *what() const throw() {
         return "Girilen deger dizi sinirlari disinda.";
+    }
+};
+
+class SayiBosHatasi : public exception {
+public:
+    virtual const char *what() const throw() {
+        return "Sayida eleman yok.";
     }
 };
 

@@ -1,11 +1,12 @@
 #include "ikiliHeap.h"
 
 void IkiliHeap::AsagiFirlat(int indeks) {
-    int solYavruIndeks = 2 * indeks + 1;
-    int sagYavruIndeks = 2 * indeks + 2;
+    int yavruKonumu = 2 * indeks;
+    int solYavruIndeks = yavruKonumu + 1;
+    int sagYavruIndeks = yavruKonumu + 2;
 
     if (solYavruIndeks >= _uzunluk)
-        return; // Yavru yapraktır.
+        return; // Yavru yapraktır, durma noktası.
 
     int enKucukIndeks = indeks;
     if (*_icerik[indeks] > *_icerik[solYavruIndeks])
@@ -24,7 +25,7 @@ void IkiliHeap::AsagiFirlat(int indeks) {
 
 void IkiliHeap::YukariFirlat(int indeks) {
     if (indeks == 0)
-        return;
+        return; // Kök düğüm, durma noktası
 
     int ebeveynIndeks = (indeks - 1) / 2;
 
@@ -88,9 +89,9 @@ void IkiliHeap::enKucuguSil() {
         return;
 
     _icerik[0] = _icerik[_uzunluk - 1];
+    _uzunluk--;
 
     AsagiFirlat(0);
-    _uzunluk--;
 }
 
 IkiliHeap::~IkiliHeap() {

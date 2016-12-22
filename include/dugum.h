@@ -3,13 +3,14 @@
 * @description Listede tutulan elemandır. Her bir düğüm bir veri ve sonraki düğümün adresini tutar. Bu zincirleme yapı
  * sayesinde baştan sona kadar düğümler kullanılarak tüm elemanlara erişmek mümkün olur.
 * @course 2A
-* @assignment 2
+* @assignment 4
 * @date 3.11.2016
 * @author Emirhan Aydın (g141210018@sakarya.edu.tr)
 */
 
 #ifndef DUGUM_H
 #define DUGUM_H
+
 
 #include <cstddef>
 
@@ -47,5 +48,6 @@ public:
 
     ~Dugum();
 };
+
 
 #endif

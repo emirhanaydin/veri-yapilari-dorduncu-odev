@@ -2,11 +2,9 @@
 * @file dosya.h
 * @description Dosya üzerinden okuma ve kuyruğa aktarma işlemlerini barındırır.
 * @course 2A
-* @assignment 3
+* @assignment 4
 * @date 6.12.2016
-* @authors
- * Emirhan Aydın (g141210018@sakarya.edu.tr)
- * Oğuzhan Şahin (g141210066@sakarya.edu.tr)
+* @author Emirhan Aydın (g141210018@sakarya.edu.tr)
 */
 
 

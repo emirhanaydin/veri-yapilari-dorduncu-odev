@@ -2,7 +2,7 @@
 * @file islem.cpp
 * @description Açıklama ilgili başlık dosyasında yapılmıştır.
 * @course 2A
-* @assignment 2
+* @assignment 4
 * @date 3.11.2016
 * @author Emirhan Aydın (g141210018@sakarya.edu.tr)
 */
@@ -17,9 +17,9 @@ short Islem::karsilastir(const Sayi &sayi, const Sayi &sayi1) {
         return 1;
     else {
         for (int i = 0, len = sayi.boyut(); i < len; ++i) {
-            if (sayi.getir(i) < sayi.getir(i))
+            if (sayi.getir(i) < sayi1.getir(i))
                 return -1;
-            else if (sayi.getir(i) > sayi.getir(i))
+            else if (sayi.getir(i) > sayi1.getir(i))
                 return 1;
         }
     }
@@ -46,7 +46,7 @@ void Islem::sayiGir(Sayi &sayi) {
     std::cout << std::endl;
 }
 
-std::string Islem::getirKatar(const Sayi &sayi) {
+std::string Islem::getirYazdir(const Sayi &sayi) {
     std::string katar = std::string();
 
     for (int i = 0, len = sayi.boyut(); i < len; ++i) {
@@ -73,6 +73,21 @@ std::string Islem::getirNoktali(const Sayi &sayi) {
     }
 
     return noktali;
+}
+
+std::string Islem::getirAyrik(const Sayi &sayi) {
+    std::string ayrik = std::string();
+
+    for (int i = 0, j = sayi.boyut(); i < j; i++) {
+        for (int k = 0; k < 2; k++) {
+            if (k == 0)
+                ayrik += sayi.getir(i);
+            else if (i < j - 1)
+                ayrik += '-';
+        }
+    }
+
+    return ayrik;
 }
 
 Sayi Islem::topla(const Sayi &sayi, const Sayi &sayi1) {
@@ -113,34 +128,4 @@ Sayi Islem::topla(const Sayi &sayi, const Sayi &sayi1) {
     }
 
     return sonuc;
-}
-
-void Islem::ayrikYazdir(Sayi &sayi) {
-    for (int i = 0, j = sayi.boyut(); i < j; i++) {
-        for (int k = 0; k < 2; k++) {
-            if (k == 0)
-                std::cout << sayi.getir(i);
-            else if (i < j - 1)
-                std::cout << '-';
-        }
-    }
-
-//    TODO return sonuc;
-}
-
-void Islem::noktaliYazdir(Sayi &sayi) {
-    int boyut = sayi.boyut();
-    int noktaSayaci = 3 - (boyut % 3);
-    if (noktaSayaci == 3) noktaSayaci = 0;
-
-    for (int i = 0; i < boyut; i++) {
-        std::cout << sayi.getir(i);
-        noktaSayaci++;
-        if (noktaSayaci == 3 && i < boyut - 1) {
-            std::cout << '.';
-            noktaSayaci = 0;
-        }
-    }
-
-//    TODO return sonuc;
 }

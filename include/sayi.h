@@ -3,7 +3,7 @@
 * @description Bir liste kullanarak sınırlandırılmamış boyutta bir sayıyı tutar. Her bir eleman bir rakamı temsil eder.
  * Başka bir sayı ile toplanabilecek şekilde tasarlanmıştır.
 * @course 2A
-* @assignment 2
+* @assignment 4
 * @date 5.11.2016
 * @author Emirhan Aydın (g141210018@sakarya.edu.tr)
 */
@@ -11,9 +11,11 @@
 #ifndef SAYI_H
 #define SAYI_H
 
+
 #include <iostream>
 #include <conio.h>
 #include "bagilliste.h"
+#include "hata.h"
 
 class Sayi {
 private:
@@ -32,12 +34,6 @@ public:
 
     friend Sayi operator+(const Sayi &, const Sayi &);
 
-    enum Bicim {
-        ardisik,
-        liste,
-        noktali
-    };
-
     /**
      * @return Sayıda kaç adet rakam bulunduğunu döndürür.
      */
@@ -48,9 +44,11 @@ public:
      */
     char getir(int indeks) const;
 
-    std::string getirKatar() const;
+    std::string getirYazdir() const;
 
     std::string getirNoktali() const;
+
+    std::string getirAyrik() const;
 
     /**
      * Konsoldan alınan değerlerin sayıya uygun olarak işlenip aktarılmasını sağlar.
@@ -65,15 +63,9 @@ public:
     void ekle(char rakam, int indeks = -1);
 
     /**
-     * Sayıyı verilen formatta konsol ekranına yazdırır.
-     * @param bicim Yazdırılacak olan biçim.
-     */
-    void yazdir(Bicim bicim = ardisik);
-
-    /**
      * Listenin son elemanını, yani tutulan son rakamı siler.
      */
-    void rakamSil();
+    void rakamSil() throw(SayiBosHatasi);
 
     /**
      * Listedeki tüm düğümler bellekten silinir ve boyut sıfırlanır. Eğer listede eleman yoksa işlem yapılmaz.
@@ -82,5 +74,6 @@ public:
 
     ~Sayi();
 };
+
 
 #endif

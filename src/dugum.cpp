@@ -2,7 +2,7 @@
 * @file dugum.cpp
 * @description Açıklama ilgili başlık dosyasında yapılmıştır.
 * @course 2A
-* @assignment 2
+* @assignment 4
 * @date 3.11.2016
 * @author Emirhan Aydın (g141210018@sakarya.edu.tr)
 */

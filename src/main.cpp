@@ -1,3 +1,12 @@
+/**
+* @file main.cpp
+* @description Dosyadan alınan verilere göre sıralama işlemini yapan programın başlangıç noktası.
+* @course 2A
+* @assignment 4
+* @date 22.12.2016
+* @author Emirhan Aydın (g141210018@sakarya.edu.tr)
+*/
+
 #include <iostream>
 #include <dosya.h>
 #include <ikiliHeap.h>
@@ -9,11 +18,24 @@ using namespace std;
 string DosyaAdiniAl(std::string);
 
 int main() {
-    const char *sayilarYolu = "C:\\Users\\Emirhan\\OneDrive\\Belgeler\\Projeler\\Repositories\\veri-yapilari-dorduncu-odev\\Sayilar.txt";
-    const char *siraliYolu = "C:\\Users\\Emirhan\\OneDrive\\Belgeler\\Projeler\\Repositories\\veri-yapilari-dorduncu-odev\\Sirali.txt";
+    const char *sayilarYolu = "Sayilar.txt";
+    const char *siraliYolu = "Sirali.txt";
+    const char *sayilarAdi = DosyaAdiniAl(sayilarYolu).c_str();
+    const char *siraliAdi = DosyaAdiniAl(siraliYolu).c_str();
 
     Dosya sayilarDosyasi(sayilarYolu);
-    sayilarDosyasi.dosyayiOku();
+
+    try {
+        sayilarDosyasi.dosyayiOku();
+    } catch (DosyaAcmaHatasi) {
+        Konsol::renkliYazdir(sayilarAdi, 12);
+        cerr << " dosyasi acilamiyor, dosya yolu yanlis olabilir."
+             << endl << endl
+             << "Program sonlandirilacak...";
+
+        _getch();
+        return EXIT_FAILURE;
+    }
 
     Sayi *sayiDizisi = new Sayi[sayilarDosyasi.satirSayisi()];
 
@@ -29,9 +51,9 @@ int main() {
 
     system("CLS");
 
-    Konsol::renkliYazdir(DosyaAdiniAl(sayilarYolu).c_str(), 12);
+    Konsol::renkliYazdir(sayilarAdi, 12);
     cout << " dosyasindaki tum sayilar ";
-    Konsol::renkliYazdir(DosyaAdiniAl(siraliYolu).c_str(), 10);
+    Konsol::renkliYazdir(siraliAdi, 10);
     cout << " dosyasina ";
     Konsol::renkliYazdir("Ikili Heap Agaci", 14);
     cout << " kullanilarak kucukten buyuge dogru sirali olarak aktarildi.";
@@ -39,7 +61,7 @@ int main() {
 
     for (int i = 0, len = sayilarDosyasi.satirSayisi(); i < len; ++i) {
         Sayi *mevcut = &ikiliHeap.getirEnKucuk();
-        siraliDosya.satirEkle(mevcut->getirKatar());
+        siraliDosya.satirEkle(mevcut->getirYazdir());
         ikiliHeap.enKucuguSil();
 
         if (i == len - 1) {
@@ -48,13 +70,24 @@ int main() {
         }
     }
 
-    siraliDosya.dosyayaKaydet();
+    try {
+        siraliDosya.dosyayaKaydet();
+    } catch (DosyaAcmaHatasi) {
+        Konsol::renkliYazdir(siraliAdi, 12);
+        cerr << " dosyasi acilamiyor, dosya yolu yanlis olabilir."
+             << endl << endl
+             << "Program sonlandirilacak...";
+
+        _getch();
+        return EXIT_FAILURE;
+    }
 
     delete[] sayiDizisi;
 
-    cout << endl << endl;
-    system("PAUSE");
-    return 0;
+    cout << endl << endl
+         << "Program sonlandirilacak...";
+    _getch();
+    return EXIT_SUCCESS;
 }
 
 string DosyaAdiniAl(string dosyaYolu) {

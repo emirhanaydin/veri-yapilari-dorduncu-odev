@@ -2,7 +2,7 @@
 * @file sayi.cpp
 * @description Açıklama ilgili başlık dosyasında yapılmıştır.
 * @course 2A
-* @assignment 2
+* @assignment 4
 * @date 5.11.2016
 * @author Emirhan Aydın (g141210018@sakarya.edu.tr)
 */
@@ -51,12 +51,16 @@ char Sayi::getir(int indeks) const {
     return _liste->getir(indeks);
 }
 
-std::string Sayi::getirKatar() const {
-    return Islem::getirKatar(*this);
+std::string Sayi::getirYazdir() const {
+    return Islem::getirYazdir(*this);
 }
 
 std::string Sayi::getirNoktali() const {
     return Islem::getirNoktali(*this);
+}
+
+std::string Sayi::getirAyrik() const {
+    return Islem::getirAyrik(*this);
 }
 
 void Sayi::sayiGir() {
@@ -69,22 +73,8 @@ void Sayi::ekle(char rakam, int indeks) {
     _boyut++;
 }
 
-void Sayi::yazdir(Sayi::Bicim bicim) {
-    switch (bicim) {
-        case ardisik:
-            std::cout << *this;
-            break;
-        case liste:
-            Islem::ayrikYazdir(*this);
-            break;
-        case noktali:
-            Islem::noktaliYazdir(*this);
-            break;
-    }
-}
-
-void Sayi::rakamSil() {
-//    TODO if (_boyut <= 0) throw Exception();
+void Sayi::rakamSil() throw(SayiBosHatasi) {
+    if (_boyut <= 0) throw SayiBosHatasi();
 
     _liste->sil(); // En son eleman diziden silinir.
     _boyut--;
