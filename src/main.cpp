@@ -25,6 +25,8 @@ int main() {
 
     Dosya sayilarDosyasi(sayilarYolu);
 
+    int sayilarSatirSay = sayilarDosyasi.satirSayisi();
+
     try {
         sayilarDosyasi.dosyayiOku();
     } catch (DosyaAcmaHatasi) {
@@ -37,16 +39,16 @@ int main() {
         return EXIT_FAILURE;
     }
 
-    Sayi *sayiDizisi = new Sayi[sayilarDosyasi.satirSayisi()];
+    Sayi *sayiDizisi = new Sayi[sayilarSatirSay];
 
     sayilarDosyasi.sayiDizisineAktar(sayiDizisi);
 
     Dosya siraliDosya(siraliYolu);
 
-    IkiliHeap ikiliHeap;
+    IkiliHeap *ikiliHeap = new IkiliHeap();
 
-    for (int i = 0, len = sayilarDosyasi.satirSayisi(); i < len; ++i) {
-        ikiliHeap.Ekle(sayiDizisi[i]);
+    for (int i = 0; i < sayilarSatirSay; ++i) {
+        ikiliHeap->Ekle(sayiDizisi[i]);
     }
 
     system("CLS");
@@ -59,12 +61,12 @@ int main() {
     cout << " kullanilarak kucukten buyuge dogru sirali olarak aktarildi.";
     cout << endl << endl;
 
-    for (int i = 0, len = sayilarDosyasi.satirSayisi(); i < len; ++i) {
-        Sayi *mevcut = &ikiliHeap.getirEnKucuk();
+    for (int i = 0; i < sayilarSatirSay; ++i) {
+        Sayi *mevcut = &ikiliHeap->getirEnKucuk();
         siraliDosya.satirEkle(mevcut->getirYazdir());
-        ikiliHeap.enKucuguSil();
+        ikiliHeap->enKucuguSil();
 
-        if (i == len - 1) {
+        if (i == sayilarSatirSay - 1) {
             Konsol::renkliYazdir("En buyuk sayi: ", 11);
             Konsol::renkliYazdir(mevcut->getirNoktali().c_str(), 15);
         }
@@ -74,7 +76,7 @@ int main() {
         siraliDosya.dosyayaKaydet();
     } catch (DosyaAcmaHatasi) {
         Konsol::renkliYazdir(siraliAdi, 12);
-        cerr << " dosyasi acilamiyor, dosya yolu yanlis olabilir."
+        cerr << " dosyasi acilamiyor, dosya kullanimda olabilir."
              << endl << endl
              << "Program sonlandirilacak...";
 
@@ -82,6 +84,7 @@ int main() {
         return EXIT_FAILURE;
     }
 
+    delete ikiliHeap;
     delete[] sayiDizisi;
 
     cout << endl << endl
