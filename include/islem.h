@@ -16,6 +16,8 @@
 
 class Islem {
 public:
+    static short karsilastir(const Sayi &, const Sayi &);
+
     static void sayiGir(Sayi &sayi);
 
     /**

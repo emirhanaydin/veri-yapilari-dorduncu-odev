@@ -36,25 +36,61 @@ void IkiliHeap::YukariFirlat(int indeks) {
     }
 }
 
-void IkiliHeap::Canlandir() {
+void IkiliHeap::IcerigiAyarla() {
     for (int i = _uzunluk - 1; i >= 0; --i) {
         AsagiFirlat(i);
     }
 }
 
+void IkiliHeap::Genislet() {
+    int yeniKapasite;
+    if (_kapasite > 0) {
+        yeniKapasite = 2 * _kapasite;
+
+        Sayi **gecici = new Sayi *[yeniKapasite];
+
+        for (int i = 0; i < _kapasite; ++i) {
+            gecici[i] = _icerik[i];
+        }
+
+        delete[] _icerik;
+        _icerik = gecici;
+    } else {
+        yeniKapasite = 1;
+        _icerik = new Sayi *[yeniKapasite];
+    }
+    _kapasite = yeniKapasite;
+}
+
 IkiliHeap::IkiliHeap() {
-    _icerik = new Sayi *[20];
+    _icerik = NULL;
+    _kapasite = 0;
     _uzunluk = 0;
 }
 
 void IkiliHeap::Ekle(Sayi &sayi) {
+    if (_uzunluk >= _kapasite) {
+        Genislet();
+    }
+
     _icerik[_uzunluk] = &sayi;
 
     YukariFirlat(_uzunluk);
+    _uzunluk++;
 }
 
-Sayi &IkiliHeap::alEnKucuk() {
+Sayi &IkiliHeap::getirEnKucuk() {
     return *_icerik[0];
+}
+
+void IkiliHeap::enKucuguSil() {
+    if (_uzunluk <= 0)
+        return;
+
+    _icerik[0] = _icerik[_uzunluk - 1];
+
+    AsagiFirlat(0);
+    _uzunluk--;
 }
 
 IkiliHeap::~IkiliHeap() {

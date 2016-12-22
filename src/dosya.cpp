@@ -15,7 +15,7 @@
 
 Dosya::Dosya(const char *dosyaAdi) {
     _dosyaAdi = dosyaAdi;
-    dosyayiOku();
+    _dosyaIcerigi = std::string();
 }
 
 bool Dosya::rakamMi(char karakter) {
@@ -53,9 +53,35 @@ void Dosya::dosyayiOku() throw(DosyaAcmaHatasi) {
     dosyaOku.close();
 }
 
+void Dosya::satirEkle(const std::string &satir) {
+    bool okundu = true;
+    try {
+        dosyayiOku();
+    } catch (DosyaAcmaHatasi) {
+        okundu = false;
+    }
+
+    if (!okundu)
+        _dosyaIcerigi = std::string();
+
+    if (_dosyaIcerigi[_dosyaIcerigi.length() - 1] != '\n')
+        _dosyaIcerigi += '\n';
+
+    _dosyaIcerigi += satir;
+}
+
+void Dosya::dosyayaKaydet() throw(DosyaAcmaHatasi) {
+    std::ofstream dosyaYaz(_dosyaAdi);
+
+    if (!dosyaYaz.is_open()) throw DosyaAcmaHatasi();
+
+    dosyaYaz << _dosyaIcerigi;
+
+    dosyaYaz.close();
+}
+
 void
-Dosya::sayiDizisineAktar(Sayi *sayiDizisi, int diziUzunlugu) throw(DosyaUygunDegilHatasi, IndeksAralikDisindaHatasi) {
-    if (diziUzunlugu < _satirSayisi) throw IndeksAralikDisindaHatasi();
+Dosya::sayiDizisineAktar(Sayi *sayiDizisi) throw(DosyaUygunDegilHatasi) {
     if (_dosyaIcerigi == std::string()) throw DosyaUygunDegilHatasi();
 
     std::string satir = std::string();

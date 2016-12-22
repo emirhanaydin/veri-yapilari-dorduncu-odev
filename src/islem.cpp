@@ -10,6 +10,23 @@
 #include "islem.h"
 #include "konsol.h"
 
+short Islem::karsilastir(const Sayi &sayi, const Sayi &sayi1) {
+    if (sayi.boyut() < sayi1.boyut())
+        return -1;
+    else if (sayi.boyut() > sayi1.boyut())
+        return 1;
+    else {
+        for (int i = 0, len = sayi.boyut(); i < len; ++i) {
+            if (sayi.getir(i) < sayi.getir(i))
+                return -1;
+            else if (sayi.getir(i) > sayi.getir(i))
+                return 1;
+        }
+    }
+
+    return 0;
+}
+
 void Islem::sayiGir(Sayi &sayi) {
     int boyut;
 

@@ -7,20 +7,25 @@
 class IkiliHeap {
 private:
     Sayi **_icerik;
+    int _kapasite;
     int _uzunluk;
 
     void AsagiFirlat(int indeks);
 
     void YukariFirlat(int indeks);
 
-    void Canlandir();
+    void IcerigiAyarla();
+
+    void Genislet();
 
 public:
     IkiliHeap();
 
     void Ekle(Sayi &sayi);
 
-    Sayi &alEnKucuk();
+    Sayi &getirEnKucuk();
+
+    void enKucuguSil();
 
     ~IkiliHeap();
 };

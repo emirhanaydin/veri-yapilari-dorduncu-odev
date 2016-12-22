@@ -21,7 +21,7 @@ Sayi::Sayi(BagilListe *liste) {
 }
 
 std::ostream &operator<<(std::ostream &os, const Sayi &sayi) {
-    if (_boyut > 0)
+    if (sayi._boyut > 0)
         os << *sayi._liste;
     else
         os << "";
@@ -34,8 +34,7 @@ bool operator==(const Sayi &sayi, const Sayi &sayi1) {
 }
 
 bool operator>(const Sayi &sayi, const Sayi &sayi1) {
-    return false;
-//    TODO return Islem::karsilastir(sayi, sayi1) > 0;
+    return Islem::karsilastir(sayi, sayi1) > 0;
 }
 
 Sayi operator+(const Sayi &sayi, const Sayi &sayi1) {

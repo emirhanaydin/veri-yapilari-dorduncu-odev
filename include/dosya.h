@@ -36,7 +36,11 @@ public:
 
     void dosyayiOku() throw(DosyaAcmaHatasi);
 
-    void sayiDizisineAktar(Sayi sayiDizisi[], int diziUzunlugu) throw(DosyaUygunDegilHatasi, IndeksAralikDisindaHatasi);
+    void satirEkle(const std::string &satir);
+
+    void dosyayaKaydet() throw(DosyaAcmaHatasi);
+
+    void sayiDizisineAktar(Sayi sayiDizisi[]) throw(DosyaUygunDegilHatasi);
 };
 
 
