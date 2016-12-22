@@ -13,7 +13,7 @@
 
 #include "sayi.h"
 
-class IkiliHeap {
+class HeapAgac {
 private:
     Sayi **_icerik;
     int _kapasite;
@@ -28,7 +28,7 @@ private:
     void Genislet();
 
 public:
-    IkiliHeap();
+    HeapAgac();
 
     void Ekle(Sayi &sayi);
 
@@ -36,7 +36,7 @@ public:
 
     void enKucuguSil();
 
-    ~IkiliHeap();
+    ~HeapAgac();
 };
 
 

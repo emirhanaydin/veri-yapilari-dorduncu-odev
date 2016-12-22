@@ -1,6 +1,6 @@
-#include "ikiliHeap.h"
+#include "heapAgac.h"
 
-void IkiliHeap::AsagiFirlat(int indeks) {
+void HeapAgac::AsagiFirlat(int indeks) {
     int yavruKonumu = 2 * indeks;
     int solYavruIndeks = yavruKonumu + 1;
     int sagYavruIndeks = yavruKonumu + 2;
@@ -23,7 +23,7 @@ void IkiliHeap::AsagiFirlat(int indeks) {
     AsagiFirlat(enKucukIndeks);
 }
 
-void IkiliHeap::YukariFirlat(int indeks) {
+void HeapAgac::YukariFirlat(int indeks) {
     if (indeks == 0)
         return; // Kök düğüm, durma noktası
 
@@ -37,13 +37,13 @@ void IkiliHeap::YukariFirlat(int indeks) {
     }
 }
 
-void IkiliHeap::IcerigiAyarla() {
+void HeapAgac::IcerigiAyarla() {
     for (int i = _uzunluk - 1; i >= 0; --i) {
         AsagiFirlat(i);
     }
 }
 
-void IkiliHeap::Genislet() {
+void HeapAgac::Genislet() {
     int yeniKapasite;
     if (_kapasite > 0) {
         yeniKapasite = 2 * _kapasite;
@@ -63,13 +63,13 @@ void IkiliHeap::Genislet() {
     _kapasite = yeniKapasite;
 }
 
-IkiliHeap::IkiliHeap() {
+HeapAgac::HeapAgac() {
     _icerik = NULL;
     _kapasite = 0;
     _uzunluk = 0;
 }
 
-void IkiliHeap::Ekle(Sayi &sayi) {
+void HeapAgac::Ekle(Sayi &sayi) {
     if (_uzunluk >= _kapasite) {
         Genislet();
     }
@@ -80,11 +80,11 @@ void IkiliHeap::Ekle(Sayi &sayi) {
     _uzunluk++;
 }
 
-Sayi &IkiliHeap::getirEnKucuk() {
+Sayi &HeapAgac::getirEnKucuk() {
     return *_icerik[0];
 }
 
-void IkiliHeap::enKucuguSil() {
+void HeapAgac::enKucuguSil() {
     if (_uzunluk <= 0)
         return;
 
@@ -94,6 +94,6 @@ void IkiliHeap::enKucuguSil() {
     AsagiFirlat(0);
 }
 
-IkiliHeap::~IkiliHeap() {
+HeapAgac::~HeapAgac() {
     delete[] _icerik;
 }

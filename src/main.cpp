@@ -9,8 +9,7 @@
 
 #include <iostream>
 #include <dosya.h>
-#include <ikiliHeap.h>
-#include <cstdlib>
+#include <heapAgac.h>
 #include <konsol.h>
 
 using namespace std;
@@ -45,7 +44,7 @@ int main() {
 
     Dosya siraliDosya(siraliYolu);
 
-    IkiliHeap *ikiliHeap = new IkiliHeap();
+    HeapAgac *ikiliHeap = new HeapAgac();
 
     for (int i = 0; i < sayilarSatirSay; ++i) {
         ikiliHeap->Ekle(sayiDizisi[i]);

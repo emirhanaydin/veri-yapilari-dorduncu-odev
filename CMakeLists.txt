@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 11)
 include_directories(include)
 set(SOURCE_FILES
         src/main.cpp
-        src/ikiliHeap.cpp include/ikiliHeap.h
+        src/heapAgac.cpp include/heapAgac.h
         src/konsol.cpp include/konsol.h
         src/dugum.cpp include/dugum.h
         src/gezici.cpp include/gezici.h
